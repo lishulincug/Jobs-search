@@ -6,7 +6,9 @@
 
 import xlwt
 import datetime
-
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 class myexcel(object):
     def __init__(self,key,city):
         self.key = key
@@ -73,6 +75,7 @@ class myexcel(object):
 
     # 信息插入完毕之后保存表格，在主爬虫完成之后必须调用这个函数才能保存表格
     def save_excel(self):
-        self.work.save("{}_{}_{}.xls".format(self.T,self.key,self.city))
+        city=self.city
+        self.work.save("{}_{}_{}.xls".format(self.T,self.key,city.encode('gbk') ))#self.city.encode('gbk')
 
 

@@ -4,6 +4,9 @@
 
 import pymysql
 import datetime
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 class get_mysql(object):
     '''链接数据库，并根据提供的数据库名称和关键词信息创建一个表格，表格存在就不创建'''
@@ -71,7 +74,7 @@ class get_mysql(object):
 
 if __name__ == '__main__':
     data = {'gs_name': '深圳市东健宇电子有限公司', 'job_link': 'http://jobs.51job.com/shenzhen/86494101.html?s=01&t=0', 'job_site': '深圳', 'salary': '4.5-6千/月', 'gs_link': 'http://jobs.51job.com/all/co2628963.html', 'job_name': '淘宝/天猫运营', 'create_date': '07-15'}
-    m = get_mysql("51job","爬虫",["深圳","武汉"])
+    m = get_mysql("51job","遥感",["深圳","武汉"])
     m.create_table()
     m.insert_data(data)
 

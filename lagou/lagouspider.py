@@ -10,8 +10,9 @@ Savedata.py是数据处理文件，负责将提取到数据存储到（Excel表�
 '''
 
 import requests
+import time
 import json
-from urllib.parse import quote
+from urllib import quote
 from config import myheaders
 from bs4 import BeautifulSoup
 from savedata import myexcel
@@ -61,6 +62,15 @@ class myspider(object):
         print("所有信息保存完毕！")
 
 if __name__ == '__main__':
+    t = time.time()
     # 城市为空的时候代表全国
-    spider = myspider("Python","深圳")
-    spider.main()
+    # spider = myspider("GIS","深圳")
+    # spider.main()
+
+    jobs = ["GIS","遥感"]
+    citys = ["深圳","武汉","桂林",'广州','柳州']
+    for i in jobs:
+        for j in citys:
+            s = myspider(i,j)
+            s.main()
+    print("耗时：{:.2f}秒".format(float(time.time()-t)))

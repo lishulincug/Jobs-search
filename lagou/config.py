@@ -2,11 +2,13 @@
 # date:2017-7-11
 # anthor:Alex
 
-import time
+import time,sys
 import random
 import datetime
 import hashlib
-from urllib.parse import quote
+from urllib import quote
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 class myheaders(object):
         # 获取当前时间字符串
@@ -48,7 +50,7 @@ class myheaders(object):
         }
         # 自定义一个cookie生成器，有一些参数的变化规则并不知道，但是可以构造自己的规则来变动，结果并不影响请求
         cookies = {
-            "index_location_city":quote(mycity,encoding="utf-8"),
+            "index_location_city":quote(mycity),#,encoding="utf-8"
             "JSESSIONID":"ABAAABAAAIAACBI699C6AEC8D8F86B2D26DDF7C78A35B92",
             "_gat":"1",
             "LGRID":cls.T+"-dc4a4e99-662d-11e7-a781-5254005c3644",
@@ -72,6 +74,6 @@ class myheaders(object):
 
 if __name__ == '__main__':
     '''测试'''
-    h = myheaders.get_headers("python","深圳")
+    h = myheaders.get_headers("GIS","深圳")
     print(h)
 

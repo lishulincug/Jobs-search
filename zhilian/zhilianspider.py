@@ -6,8 +6,11 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import re
-from urllib.parse import quote
+from urllib import quote
 from savedata import get_Mysql
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 class mySpider(object):
     def __init__(self,daname,mykey,mycity):
@@ -99,8 +102,8 @@ class mySpider(object):
 if __name__ == '__main__':
     t = time.time()
     # 列表循环创建表格
-    jobs = ["python"]
-    citys = ["深圳","武汉"]
+    jobs = ["GIS"]
+    citys =  ["深圳","武汉","桂林",'广州','柳州']
     for i in jobs:
         for j in citys:
             s = mySpider("zhilian_jobs",i,j)

@@ -3,6 +3,9 @@
 # author:Alex
 
 import re
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 class city_to_num(object):
     # 前程无忧的城市代码对应字典

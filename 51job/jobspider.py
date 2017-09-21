@@ -10,9 +10,13 @@ import re
 import time
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import quote
+from urllib import quote
 from citynum import city_to_num
 from savedata import get_mysql
+
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 
 class Myspider(object):
@@ -71,7 +75,7 @@ class Myspider(object):
 if __name__ == '__main__':
     t = time.time()
     dbname = "51job"
-    KEY = "爬虫"
+    KEY = "GIS"
     # 城市使用一个列表，因为前程无忧可以一次多选城市查询
     CITYS = ["深圳","武汉"]
     spider = Myspider(dbname,KEY,CITYS)
