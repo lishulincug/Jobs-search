@@ -7,7 +7,9 @@ import jieba.analyse
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from scipy.misc import imread
-
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 # 定义一个词语集合
 set = set()
