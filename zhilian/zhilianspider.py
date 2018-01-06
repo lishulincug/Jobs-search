@@ -102,7 +102,7 @@ class mySpider(object):
 if __name__ == '__main__':
     t = time.time()
     # 列表循环创建表格
-    jobs = ["GIS"]
+    jobs = ["GIS",u'机器学习']
     citys =  ["深圳","武汉","桂林",'广州','柳州']
     for i in jobs:
         for j in citys:
