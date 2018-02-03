@@ -22,6 +22,115 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
+def send_email(text):
+    # text = self.claw_content()
+    # open('b.txt', 'w').write(str(text[1]) + '\n' + str(text[0]) + '\n')
+    username = '15623863340@163.com'  # input("请输入账号:")
+    password = '133499cug'  # input("请输入密码:")
+    sender = username
+    # sender=''
+    receiver = ['1627041882@qq.com',
+                '760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
+    if sender == '':
+        username = str(raw_input("Please Input Sender Email Address,for example:xxxxxxxxxx@126.com \n"))
+        sender = username
+        password = str(raw_input("Please Input Sender Password \n"))
+        receiver.append(str(raw_input("Please Input Receiver Address,for example:xxxxxxxxxx@qq.com \n")))
+    iRec = 1
+    while iRec > 0:
+        CmdRec = ''  # raw_input("Whether you want to add another Receiver Address(default n)? \n")
+        if CmdRec == 'y' or CmdRec == 'yes':
+            iRec = 1
+            receiver.append(str(raw_input("Please Input Receiver Address,for example:xxxxxxxxxx@qq.com \n")))
+        else:
+            iRec = 0
+
+    ConfirmRec = ''  # raw_input("Confirm? \n")
+    if ConfirmRec == 'n' or ConfirmRec == 'no':
+        print("What Do You Want? Maybe run this program again.\n")
+        exit(1)
+    else:
+        for rece in receiver:
+            print("OK \n" + username + " sendto " + rece)
+            # 创建一个带附件的实例
+    msg = MIMEMultipart()
+    # msg = MIMEText(str(text), 'plain', 'utf-8')
+    msg['From'] = formataddr(['user', sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+    msg['To'] = ",".join(receiver)  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+
+    subject_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    subject = '筛选后招聘信息'
+    msg['Subject'] = subject
+
+    # 邮件正文内容
+    # print str(text[0])
+    realText = text  # sendmsg #str(text)  #'\n'+str(subject_time)+'：主人，有人来招人啦！^—^\n'+ '海投网：'+str(text[1])+'.'#+str(text[0])#'地大就业网招聘公告：'+str(text1[1])+'地大就业网gis等招聘信息：'+str(text2[1])+'.'#+str(text1[0])+'\n'+str(text2[1])+'\n'+str(text2[0])
+    print realText
+    msg.attach(MIMEText(realText, 'plain', 'utf-8'))
+
+    # 构造附件1，传送当前目录下的 test.txt 文件
+    # att1 = MIMEApplication(open('b.txt', 'rb').read())
+    # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
+    # att1.add_header('Content-Disposition', 'attachment', filename='hjx.txt')
+    # msg.attach(att1)
+    # # 构造附件1，传送当前目录下的 test.txt 文件
+    # att2 = MIMEApplication(open('b1.txt', 'rb').read())
+    # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
+    # att2.add_header('Content-Disposition', 'attachment', filename='b1.txt')
+    # msg.attach(att2)
+    # att3 = MIMEApplication(open('b2.txt', 'rb').read())
+    # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
+    # att3.add_header('Content-Disposition', 'attachment', filename='b2.txt')
+    # msg.attach(att3)
+    smtpserver = 'smtp.126.com'
+    try:
+        smtp = smtplib.SMTP(smtpserver, 25)
+        smtp.starttls()
+        smtp.login(username, password)
+        smtp.sendmail(sender, receiver, msg.as_string())
+        smtp.quit()
+        print(u"邮件发送成功")
+    except smtplib.SMTPException, e:
+        print(u"Error: 无法发送邮件:" + str(e))
+        smtp.quit()
+        try:
+            username = 'lishulincug@163.com'  # input("请输入账号:")
+            password = '123456lsl'  # input("请输入密码:")
+            sender = username
+            # sender=''
+            # receiver = [ '1627041882@qq.com','994992333@qq.com','1847725033@qq.com']  # 'xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com'
+            msg['From'] = formataddr(['lishulin', sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+            msg['To'] = ",".join(receiver)  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+            smtpserver = 'smtp.163.com'
+            smtp = smtplib.SMTP(smtpserver, 25)
+            smtp.starttls()
+            smtp.login(username, password)
+            for jj in receiver:
+                smtp.sendmail(sender, jj, msg.as_string())
+                time.sleep(35)
+            smtp.quit()
+            print(u"邮件发送成功")
+        except smtplib.SMTPException, e1:
+            print(u"Error: 无法发送邮件:" + str(e1))
+            smtp.quit()
+            try:
+                username = '15623863340@sina.cn'  # input("请输入账号:")
+                password = '133499'  # input("请输入密码:")
+                sender = username
+                # sender=''
+                # receiver = [ '1627041882@qq.com','994992333@qq.com','1847725033@qq.com']  # 'xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com'
+                msg['From'] = formataddr(['15623863340@sina.cn', sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+                msg['To'] = ",".join(receiver)  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+                smtpserver = 'smtp.sina.cn'
+                smtp = smtplib.SMTP(smtpserver, 25)
+                smtp.starttls()
+                smtp.login(username, password)
+                smtp.sendmail(sender, receiver, msg.as_string())
+                smtp.quit()
+                print(u"邮件发送成功")
+            except smtplib.SMTPException, e2:
+                print(u"Error: 无法发送邮件:" + str(e2))
+                smtp.quit()
 class Myspider(object):
     def __init__(self,dbname,mykey,mycitys):
         '''链接数据库并自动生成一个表格'''
@@ -90,117 +199,8 @@ class Myspider(object):
             print(e)
         finally:
             # self.mysql.close_mytable()
-            return getdata
-
-def send_email(text):
-        # text = self.claw_content()
-        # open('b.txt', 'w').write(str(text[1]) + '\n' + str(text[0]) + '\n')
-        username = '15623863340@163.com'  # input("请输入账号:")
-        password = '133499cug'  # input("请输入密码:")
-        sender = username
-        # sender=''
-        receiver = ['1627041882@qq.com',
-                    '760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
-        if sender == '':
-            username = str(raw_input("Please Input Sender Email Address,for example:xxxxxxxxxx@126.com \n"))
-            sender = username
-            password = str(raw_input("Please Input Sender Password \n"))
-            receiver.append(str(raw_input("Please Input Receiver Address,for example:xxxxxxxxxx@qq.com \n")))
-        iRec = 1
-        while iRec > 0:
-            CmdRec = ''  # raw_input("Whether you want to add another Receiver Address(default n)? \n")
-            if CmdRec == 'y' or CmdRec == 'yes':
-                iRec = 1
-                receiver.append(str(raw_input("Please Input Receiver Address,for example:xxxxxxxxxx@qq.com \n")))
-            else:
-                iRec = 0
-
-        ConfirmRec = ''  # raw_input("Confirm? \n")
-        if ConfirmRec == 'n' or ConfirmRec == 'no':
-            print("What Do You Want? Maybe run this program again.\n")
-            exit(1)
-        else:
-            for rece in receiver:
-                print("OK \n" + username + " sendto " + rece)
-                # 创建一个带附件的实例
-        msg = MIMEMultipart()
-        # msg = MIMEText(str(text), 'plain', 'utf-8')
-        msg['From'] = formataddr(['user', sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-        msg['To'] = ",".join(receiver)  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-
-        subject_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        subject = '筛选后招聘信息'
-        msg['Subject'] = subject
-
-        # 邮件正文内容
-        # print str(text[0])
-        realText = text  # sendmsg #str(text)  #'\n'+str(subject_time)+'：主人，有人来招人啦！^—^\n'+ '海投网：'+str(text[1])+'.'#+str(text[0])#'地大就业网招聘公告：'+str(text1[1])+'地大就业网gis等招聘信息：'+str(text2[1])+'.'#+str(text1[0])+'\n'+str(text2[1])+'\n'+str(text2[0])
-        print realText
-        msg.attach(MIMEText(realText, 'plain', 'utf-8'))
-
-        # 构造附件1，传送当前目录下的 test.txt 文件
-        # att1 = MIMEApplication(open('b.txt', 'rb').read())
-        # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
-        # att1.add_header('Content-Disposition', 'attachment', filename='hjx.txt')
-        # msg.attach(att1)
-        # # 构造附件1，传送当前目录下的 test.txt 文件
-        # att2 = MIMEApplication(open('b1.txt', 'rb').read())
-        # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
-        # att2.add_header('Content-Disposition', 'attachment', filename='b1.txt')
-        # msg.attach(att2)
-        # att3 = MIMEApplication(open('b2.txt', 'rb').read())
-        # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
-        # att3.add_header('Content-Disposition', 'attachment', filename='b2.txt')
-        # msg.attach(att3)
-        smtpserver = 'smtp.126.com'
-        try:
-            smtp = smtplib.SMTP(smtpserver, 25)
-            smtp.starttls()
-            smtp.login(username, password)
-            smtp.sendmail(sender, receiver, msg.as_string())
-            smtp.quit()
-            print(u"邮件发送成功")
-        except smtplib.SMTPException, e:
-            print(u"Error: 无法发送邮件:" + str(e))
-            smtp.quit()
-            try:
-                username = 'lishulincug@163.com'  # input("请输入账号:")
-                password = '123456lsl'  # input("请输入密码:")
-                sender = username
-                # sender=''
-                # receiver = [ '1627041882@qq.com','994992333@qq.com','1847725033@qq.com']  # 'xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com'
-                msg['From'] = formataddr(['lishulin', sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-                msg['To'] = ",".join(receiver)  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-                smtpserver = 'smtp.163.com'
-                smtp = smtplib.SMTP(smtpserver, 25)
-                smtp.starttls()
-                smtp.login(username, password)
-                for jj in receiver:
-                    smtp.sendmail(sender, jj, msg.as_string())
-                    time.sleep(35)
-                smtp.quit()
-                print(u"邮件发送成功")
-            except smtplib.SMTPException, e1:
-                print(u"Error: 无法发送邮件:" + str(e1))
-                smtp.quit()
-                try:
-                    username = '15623863340@sina.cn'  # input("请输入账号:")
-                    password = '133499'  # input("请输入密码:")
-                    sender = username
-                    # sender=''
-                    # receiver = [ '1627041882@qq.com','994992333@qq.com','1847725033@qq.com']  # 'xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com'
-                    msg['From'] = formataddr(['15623863340@sina.cn', sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-                    msg['To'] = ",".join(receiver)  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-                    smtpserver = 'smtp.sina.cn'
-                    smtp = smtplib.SMTP(smtpserver, 25)
-                    smtp.starttls()
-                    smtp.login(username, password)
-                    smtp.sendmail(sender, receiver, msg.as_string())
-                    smtp.quit()
-                    print(u"邮件发送成功")
-                except smtplib.SMTPException, e2:
-                    print(u"Error: 无法发送邮件:" + str(e2))
-                    smtp.quit()
+            if (getdata !=None):
+                return getdata
 
 if __name__ == '__main__':
     t = time.time()
