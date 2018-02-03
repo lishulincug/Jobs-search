@@ -162,7 +162,8 @@ class Myspider(object):
     def get_one_page(self,url):
         '''从第一页开始，获取信息，并判断是否有下一页，如若有则继续爬虫，递归翻页'''
         print url
-        req = requests.get(url,headers=self.Headers)
+        # req = requests.get(url,headers=self.Headers)
+        req = requests.get(url)
         req.encoding = "gbk"
         soup = BeautifulSoup(req.text,"lxml")
         # 获取所有职位信息，第一条是标题
@@ -193,8 +194,10 @@ class Myspider(object):
 
     def main(self):
         '''尝试爬信息并保存到数据库，若爬虫失败也要关闭数据库连接'''
+        getdata=[]
         try:
             getdata=self.get_one_page(spider.start_url)
+            # getdata
         except Exception as e:
             print(e)
         finally:
