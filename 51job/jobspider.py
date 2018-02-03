@@ -27,6 +27,8 @@ def send_email(text):
     # open('b.txt', 'w').write(str(text[1]) + '\n' + str(text[0]) + '\n')
     username = '15623863340@163.com'  # input("请输入账号:")
     password = '133499cug'  # input("请输入密码:")
+    username = 'lsl_cug@126.com'  # input("请输入账号:")
+    password = '123456lsl'
     sender = username
     # sender=''
     receiver = ['760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
@@ -81,7 +83,7 @@ def send_email(text):
     # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
     # att3.add_header('Content-Disposition', 'attachment', filename='b2.txt')
     # msg.attach(att3)
-    smtpserver = 'smtp.163.com'
+    smtpserver = 'smtp.126.com'
     try:
         smtp = smtplib.SMTP(smtpserver, 25)
         smtp.starttls()
