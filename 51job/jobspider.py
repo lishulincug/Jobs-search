@@ -29,8 +29,7 @@ def send_email(text):
     password = '133499cug'  # input("请输入密码:")
     sender = username
     # sender=''
-    receiver = ['1627041882@qq.com',
-                '760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
+    receiver = ['760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
     if sender == '':
         username = str(raw_input("Please Input Sender Email Address,for example:xxxxxxxxxx@126.com \n"))
         sender = username
@@ -214,12 +213,12 @@ if __name__ == '__main__':
     sendmsg ='招聘信息\n'
     for KEY in KEYs:
         spider = Myspider(dbname,KEY,CITYS)
-        resu=spider.main()
+        #resu=spider.main()
         sendmsg +=str(KEY)+': '+str(spider.start_url) +'\n'
-        for imsg in resu[:6]:
-            for j in imsg:
-                sendmsg += imsg[j]+" "
-            sendmsg +='\n'
+        #for imsg in resu[:6]:
+        #    for j in imsg:
+        #        sendmsg += imsg[j]+" "
+        #    sendmsg +='\n'
     send_email(sendmsg)
     print("耗时：{:.2f}秒".format(float(time.time() - t)))
     # self.start_url='http://search.51job.com/list/040000,000000,0000,00,9,99,%25E5%25A4%2596%25E8%25B4%25B8,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='#外贸
