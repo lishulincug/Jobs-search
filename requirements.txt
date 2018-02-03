@@ -1,3 +1,5 @@
 BeautifulSoup==3.2.1
 beautifulsoup4==4.6.0
 requests==2.14.2
+urllib3==1.22
+re==0.1
