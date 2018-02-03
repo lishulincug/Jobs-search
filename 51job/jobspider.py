@@ -82,7 +82,7 @@ def send_email(text):
     # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
     # att3.add_header('Content-Disposition', 'attachment', filename='b2.txt')
     # msg.attach(att3)
-    smtpserver = 'smtp.126.com'
+    smtpserver = 'smtp.163.com'
     try:
         smtp = smtplib.SMTP(smtpserver, 25)
         smtp.starttls()
