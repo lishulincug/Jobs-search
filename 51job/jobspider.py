@@ -29,10 +29,10 @@ def send_email(text):
     password = '133499cug'  # input("请输入密码:")
     username='lishulincug@21cn.com'
     password = '133499lsl'
-    username='15623863340'
-    password = '133499lsl'
-    username = 'lsl_cug@126.com'  # input("请输入账号:")
-    password = '123456lsl'
+    username='lishulincug@126.com'
+    password = '133499cug'
+    # username = 'lsl_cug@126.com'  # input("请输入账号:")
+    # password = '123456lsl'
     sender = username
     # sender=''
     receiver = ['1627041882@qq.com',
@@ -88,7 +88,7 @@ def send_email(text):
     # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
     # att3.add_header('Content-Disposition', 'attachment', filename='b2.txt')
     # msg.attach(att3)
-    smtpserver = 'smtp.163.com '
+    smtpserver = 'smtp.126.com'
     try:
         # s = smtplib.SMTP("smtp.163.com")
         # s.login("baojingtongzhi@163.com", "xxx")
@@ -115,9 +115,9 @@ def send_email(text):
             smtp = smtplib.SMTP(smtpserver, 25)
             smtp.starttls()
             smtp.login(username, password)
-            for jj in receiver:
-                smtp.sendmail(sender, jj, msg.as_string())
-                time.sleep(35)
+            # for jj in receiver:
+            smtp.sendmail(sender, receiver, msg.as_string())
+            time.sleep(35)
             smtp.quit()
             print(u"邮件发送成功")
         except smtplib.SMTPException, e1:
