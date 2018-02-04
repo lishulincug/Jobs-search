@@ -27,11 +27,13 @@ def send_email(text):
     # open('b.txt', 'w').write(str(text[1]) + '\n' + str(text[0]) + '\n')
     username = '15623863340@163.com'  # input("请输入账号:")
     password = '133499cug'  # input("请输入密码:")
-    username = 'lsl_cug@126.com'  # input("请输入账号:")
-    password = '123456lsl'
+    #username = 'lsl_cug@126.com'  # input("请输入账号:")
+    #password = '123456lsl'
+    username = 'lishulincug@126.com'  # input("请输入账号:")
+    password = '133499cug'
     sender = username
     # sender=''
-    receiver = ['760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
+    receiver = ['760140853@qq.com','2696231685@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
     if sender == '':
         username = str(raw_input("Please Input Sender Email Address,for example:xxxxxxxxxx@126.com \n"))
         sender = username
@@ -153,11 +155,11 @@ class Myspider(object):
         self.start_url='http://search.51job.com/list/{},000000,0000,00,2,06%252C07%252C08%252C09%252C10,{},2%252C06%25252C07%25252C08%25252C09%25252C10%252C,1.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=04%2C08%2C10&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=5&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(quote(citynum), quote(self.key).replace('%','%25'))
         # self.start_url='http://search.51job.com/list/{},000000,0000,00,2,06,{},2,1.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=21&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(quote(citynum), quote(self.key).replace('%','%25'))
         if(self.key=='外贸'):
-            self.start_url ='http://search.51job.com/list/040000,000000,0000,00,2,06%252C07%252C08%252C09%252C10,%25E5%25A4%2596%25E8%25B4%25B8,2,1.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=04%2C08%2C10&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=5&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='
+            self.start_url ='http://search.51job.com/list/{},000000,0000,00,2,06%252C07%252C08%252C09%252C10,%25E5%25A4%2596%25E8%25B4%25B8,2,1.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=04%2C08%2C10&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=5&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(quote(citynum))
         elif (self.key == '银行'):
-            self.start_url ='http://search.51job.com/list/040000,000000,0000,00,2,06,%25E9%2593%25B6%25E8%25A1%258C,2,2.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=21&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='
+            self.start_url ='http://search.51job.com/list/{},000000,0000,00,2,06,%25E9%2593%25B6%25E8%25A1%258C,2,2.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=21&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(quote(citynum))
         elif(self.key=='经理'):
-            self.start_url='http://search.51job.com/list/040000,000000,0000,00,2,06%252C07%252C08%252C09%252C10,%25E7%25BB%258F%25E7%2590%2586,2,1.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=01%2C04%2C08%2C10&degreefrom=04&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=5&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='
+            self.start_url='http://search.51job.com/list/{},000000,0000,00,2,06%252C07%252C08%252C09%252C10,%25E7%25BB%258F%25E7%2590%2586,2,1.html?lang=c&stype=1&postchannel=0000&workyear=99&cotype=01%2C04%2C08%2C10&degreefrom=04&jobterm=99&companysize=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=5&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='.format(quote(citynum))
         # self.mysql = get_mysql(self.dbname,self.key,self.citys)
 
     def get_one_page(self,url):
@@ -211,7 +213,7 @@ if __name__ == '__main__':
     dbname = "51job"
     KEYs = ['银行','外贸','经理']
     # 城市使用一个列表，因为前程无忧可以一次多选城市查询
-    CITYS = ["深圳"]
+    CITYS = ["深圳","南宁","广州"]
     sendmsg ='招聘信息\n'
     for KEY in KEYs:
         spider = Myspider(dbname,KEY,CITYS)
