@@ -27,10 +27,10 @@ def send_email(text):
     # open('b.txt', 'w').write(str(text[1]) + '\n' + str(text[0]) + '\n')
     username = '15623863340@163.com'  # input("请输入账号:")
     password = '133499cug'  # input("请输入密码:")
-    #username = 'lsl_cug@126.com'  # input("请输入账号:")
-    #password = '123456lsl'
-    username = 'lishulincug@126.com'  # input("请输入账号:")
-    password = '133499cug'
+    username = 'lsl_cug@126.com'  # input("请输入账号:")
+    password = '123456lsl'
+    #username = 'lishulincug@126.com'  # input("请输入账号:")
+    #password = '133499cug'
     sender = username
     # sender=''
     receiver = ['760140853@qq.com','2696231685@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
