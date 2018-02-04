@@ -35,7 +35,7 @@ def send_email(text):
     # password = '123456lsl'
     sender = username
     # sender=''
-    receiver = ['1627041882@qq.com',
+    receiver = ['2696231685@qq.com',
                 '760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
     if sender == '':
         username = str(raw_input("Please Input Sender Email Address,for example:xxxxxxxxxx@126.com \n"))
