@@ -27,13 +27,16 @@ def send_email(text):
     # open('b.txt', 'w').write(str(text[1]) + '\n' + str(text[0]) + '\n')
     username = '15623863340@163.com'  # input("请输入账号:")
     password = '133499cug'  # input("请输入密码:")
+    username='lishulincug@21cn.com'
+    password = '133499lsl'
+    username='15623863340'
+    password = '133499lsl'
     username = 'lsl_cug@126.com'  # input("请输入账号:")
     password = '123456lsl'
-    #username = 'lishulincug@126.com'  # input("请输入账号:")
-    #password = '133499cug'
     sender = username
     # sender=''
-    receiver = ['760140853@qq.com','2696231685@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
+    receiver = ['1627041882@qq.com',
+                '760140853@qq.com']  # '760140853@qq.com','xxxxxxxxxx@qq.com','xxxxxxxxxx@126.com','994992333@qq.com','1847725033@qq.com','1847725033@qq.com','849281511@qq.com'
     if sender == '':
         username = str(raw_input("Please Input Sender Email Address,for example:xxxxxxxxxx@126.com \n"))
         sender = username
@@ -85,9 +88,13 @@ def send_email(text):
     # # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
     # att3.add_header('Content-Disposition', 'attachment', filename='b2.txt')
     # msg.attach(att3)
-    smtpserver = 'smtp.126.com'
+    smtpserver = 'smtp.163.com '
     try:
-        smtp = smtplib.SMTP(smtpserver, 25)
+        # s = smtplib.SMTP("smtp.163.com")
+        # s.login("baojingtongzhi@163.com", "xxx")
+        # s.sendmail("baojingtongzhi@163.com", receiver, msg)
+        smtp = smtplib.SMTP(smtpserver,25)
+        # smtp=smtplib.SMTP("localhost")
         smtp.starttls()
         smtp.login(username, password)
         smtp.sendmail(sender, receiver, msg.as_string())
@@ -213,17 +220,17 @@ if __name__ == '__main__':
     dbname = "51job"
     KEYs = ['银行','外贸','经理']
     # 城市使用一个列表，因为前程无忧可以一次多选城市查询
-    CITYS = ["深圳","南宁","广州"]
+    CITYS = [["深圳"], ["南宁"], ["广州"]]
     sendmsg ='招聘信息\n'
-    for CITY in CITYS:
+    for iCITY in CITYS:
         for KEY in KEYs:
-            spider = Myspider(dbname,KEY,CITY)
-            #resu=spider.main()
-            sendmsg +=str(CITY)+str(KEY)+': '+str(spider.start_url) +'\n'
-            #for imsg in resu[:6]:
-            #    for j in imsg:
-            #        sendmsg += imsg[j]+" "
-            #    sendmsg +='\n'
+            spider = Myspider(dbname, KEY, iCITY)
+            # resu=spider.main()
+            sendmsg += str(iCITY[0]) +'  '+ str(KEY) + ': ' + str(spider.start_url) + '\n'
+        # for imsg in resu[:6]:
+        #     for j in imsg:
+        #         sendmsg += imsg[j]+" "
+        #     sendmsg +='\n'
     send_email(sendmsg)
     print("耗时：{:.2f}秒".format(float(time.time() - t)))
     # self.start_url='http://search.51job.com/list/040000,000000,0000,00,9,99,%25E5%25A4%2596%25E8%25B4%25B8,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare='#外贸
