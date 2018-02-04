@@ -217,7 +217,7 @@ if __name__ == '__main__':
     sendmsg ='招聘信息\n'
     for CITY in CITYS:
         for KEY in KEYs:
-            spider = Myspider(dbname,KEY,CITYS)
+            spider = Myspider(dbname,KEY,CITY)
             #resu=spider.main()
             sendmsg +=str(CITY)+str(KEY)+': '+str(spider.start_url) +'\n'
             #for imsg in resu[:6]:
