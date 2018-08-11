@@ -5,5 +5,4 @@ python:
 install: "pip install -r requirements.txt"
 # command to run tests
 script:
-  - python ./Haitou_cug/haitou_1.py
-
+  - python ./Haitou_cug/haitou1.py
