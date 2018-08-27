@@ -298,14 +298,14 @@ if __name__=='__main__':
 #     open('b2.txt', 'w').write(str(text1[1]) + '\n' + str(text1[0]) + '\n')
 #     text2 = xiaozhao.dida_jiuye_search()
 #     open('b2.txt', 'a+').write(str(text2[1]) + '\n' + str(text2[0]) + '\n')
-    xiaozhao.send_email()
-    while True:
-        #    print time.localtime()
-        #    print time.strftime("%y-%m-%d %H:%M:%S",time.localtime())
-        # xiaozhao = Xiaozhao()
-        # xiaozhao.send_email()
-        s.enter(1, 1, check_time, deb_print())
-        s.run()
+#     xiaozhao.send_email()
+#     while True:
+#         #    print time.localtime()
+#         #    print time.strftime("%y-%m-%d %H:%M:%S",time.localtime())
+#         # xiaozhao = Xiaozhao()
+#         # xiaozhao.send_email()
+#         s.enter(1, 1, check_time, deb_print())
+#         s.run()
 
 # import win32gui
 # import win32con
