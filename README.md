@@ -1,4 +1,5 @@
 [![Build Status](https://www.travis-ci.org/lishulincug/Jobs-search.svg?branch=master)](https://www.travis-ci.org/lishulincug/Jobs-search)
+https://www.travis-ci.org/lishulincug/Jobs-search.svg?branch=master
 ## 招聘网站爬虫合集
 ### 项目当前结构（不定时更新分支）
 - [**lagou**](https://github.com/Hopetree/Jobs-search/tree/master/lagou)
